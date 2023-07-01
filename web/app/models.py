@@ -19,8 +19,12 @@ class SmsPanel(models.Model):
     username = models.CharField(max_length=250, blank=True, null=True)
     password = models.CharField(max_length=250, blank=True, null=True)
 
+    def __str__(self):
+        return self.panel
+    
+
 class Sms(models.Model):
     panel = models.ForeignKey(SmsPanel, on_delete=models.RESTRICT)
     receptor = models.CharField(max_length=250, blank=True, null=True)
-    msg = models.CharField(max_length=250, blank=True, null=True)
-    send_at = models.DateTimeField(auto_now=True)
+    message = models.CharField(max_length=250, blank=True, null=True)
+    send_at = models.DateTimeField(auto_now_add=True)

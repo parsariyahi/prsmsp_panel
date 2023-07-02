@@ -53,6 +53,13 @@
 
                                         <div class="form-group">
                                             <label for="">
+                                                {{form.originator.label}}
+                                            </label>
+                                            {{form.originator}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">
                                                 {{form.receptor.label}}
                                             </label>
                                             {{form.receptor}}
@@ -98,6 +105,13 @@
         </div>
 
     </div>
+
+    {% if resp %}
+    <ul class="messages" style="color: rgb(255, 255, 255);">
+        <li class="">{{ resp.real_resp }}</li>
+    </ul>
+    {% endif %}
+
 
     {% if messages %}
     <ul class="messages" style="color: rgb(255, 255, 255);">

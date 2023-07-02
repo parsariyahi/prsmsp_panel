@@ -3,11 +3,19 @@ from django.http.response import JsonResponse
 from django.contrib import messages
 from prsmsp.panel import Panel
 
-from app.models import SmsPanel
+from app.models import SmsPanel, Sms
 from app.forms import SmsPanelForm, SmsForm
 
 def index(request):
-    return render(request, "index.html")
+    smses = Sms.objects.all()
+    panel_smses = SmsPanel.objects.all()
+    total_sms = smses.count()
+    total_sms_panel = panel_smses.count()
+
+    return render(request, "index.html", {
+        "total_sms": total_sms,
+        "total_sms_panel": total_sms_panel,
+    })
 
 def add_panel(request):
 

@@ -25,6 +25,7 @@ class SmsPanel(models.Model):
 
 class Sms(models.Model):
     panel = models.ForeignKey(SmsPanel, on_delete=models.RESTRICT)
+    originator = models.CharField(max_length=250, blank=True, null=True)
     receptor = models.CharField(max_length=250, blank=True, null=True)
     message = models.CharField(max_length=250, blank=True, null=True)
     send_at = models.DateTimeField(auto_now_add=True)
